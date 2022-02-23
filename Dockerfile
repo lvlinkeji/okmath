@@ -37,6 +37,8 @@ RUN apk update && \
 
 #nginx网站目录是 /etc/nginx/http.d/default.conf
 
+#备注：记得添加 PASSWORD 环境变量
+
 #RUN chmod +x /start.sh
 
 EXPOSE 1-65535
