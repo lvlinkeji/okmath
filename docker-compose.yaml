@@ -1,0 +1,5 @@
+services:
+  okmath:
+    build: .
+    ports:
+      - "80:80"

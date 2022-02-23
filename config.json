@@ -1,0 +1,41 @@
+{
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https+local://1.1.1.1/dns-query",
+        "localhost"
+      ]
+    },
+    "inbounds": [
+      {
+        "port": 1234,
+        "listen": "127.0.0.1",
+        "protocol": "vless",
+        "settings": {
+          "clients": [
+            {
+              "id": "88c4d242-68a1-11ec-90d6-0242ac120003",
+              "level": 0,
+              "email": "love@example.com"
+            }
+          ],
+          "decryption": "none"
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "none",
+          "wsSettings": {
+            "path": "/mathcourse"
+          }
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "tag": "direct"
+      }
+    ]
+  }
