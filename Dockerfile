@@ -41,6 +41,4 @@ RUN apk update && \
 
 #RUN chmod +x /start.sh
 
-EXPOSE 1-65535
-
 ENTRYPOINT ["/start.sh"]
