@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 ADD . /
 
 RUN apk update && \
-    apk add --no-cache ca-certificates tor wget curl bash screen vim nano python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm && \
+    apk add --no-cache ca-certificates tor wget curl bash screen vim nano python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm && \
     chmod +rw /default.conf && \
     chmod +rwx /config.json && \
     chmod +rwx /mathcalc/mathcalc && \
@@ -24,7 +24,6 @@ RUN apk update && \
     curl https://rclone.org/install.sh | bash && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     echo root:c68.300OQa|chpasswd && \
-    npm config set python python3 && \
     npm config set unsafe-perm true && \
     npm install -g code-server && \
     rm -rf /etc/nginx/http.d/default.conf && \
