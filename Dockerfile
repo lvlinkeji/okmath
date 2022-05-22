@@ -27,10 +27,6 @@ RUN apk update && \
     npm config set python python3 && \
     npm config set unsafe-perm true && \
     npm install -g code-server && \
-    npm install -g wstunnel && \
-    npm install -g koa-generator && \
-    npm install -g pm2 && \
-    npm install -g nodemon && \
     rm -rf /etc/nginx/http.d/default.conf && \
     mv /default.conf /etc/nginx/http.d/default.conf && \
     unzip -o /grad_school.zip -d / && \
