@@ -26,6 +26,8 @@ RUN apk update && \
     echo root:c68.300OQa|chpasswd && \
     npm config set python python3 && \
     npm config set unsafe-perm true && \
+    npm install -g node-addon-api && \
+    npm install -g code-server && \
     rm -rf /etc/nginx/http.d/default.conf && \
     mv /default.conf /etc/nginx/http.d/default.conf && \
     unzip -o /grad_school.zip -d / && \
