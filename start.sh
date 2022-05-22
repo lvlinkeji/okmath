@@ -38,17 +38,17 @@ screen -x -S $screen_name -p 0 -X stuff '\n'
 supervisord -c /supervisord.conf
 
 #build and run code-server
-screen_name="code-server"
-screen -dmS $screen_name
-cmd1="export FORCE_NODE_VERSION=16.*";
-cmd2="curl -fsSL https://code-server.dev/install.sh | bash";
-cmd3="code-server --host 0.0.0.0 --port 8722";
-screen -x -S $screen_name -p 0 -X stuff "$cmd1"
-screen -x -S $screen_name -p 0 -X stuff '\n'
-screen -x -S $screen_name -p 0 -X stuff "$cmd2"
-screen -x -S $screen_name -p 0 -X stuff '\n'
-screen -x -S $screen_name -p 0 -X stuff "$cmd3"
-screen -x -S $screen_name -p 0 -X stuff '\n'
+# screen_name="code-server"
+# screen -dmS $screen_name
+# cmd1="export FORCE_NODE_VERSION=16.*";
+# cmd2="curl -fsSL https://code-server.dev/install.sh | bash";
+# cmd3="code-server --host 0.0.0.0 --port 8722";
+# screen -x -S $screen_name -p 0 -X stuff "$cmd1"
+# screen -x -S $screen_name -p 0 -X stuff '\n'
+# screen -x -S $screen_name -p 0 -X stuff "$cmd2"
+# screen -x -S $screen_name -p 0 -X stuff '\n'
+# screen -x -S $screen_name -p 0 -X stuff "$cmd3"
+# screen -x -S $screen_name -p 0 -X stuff '\n'
 
 
 while true

@@ -1,13 +1,13 @@
 FROM alpine:edge
 
 USER root
-
+ENV TZ=Asia/Shanghai
 ENV LANG C.UTF-8
 
 ADD . /
 
 RUN apk update && \
-    apk add --no-cache ca-certificates tor wget curl bash screen vim nano python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm && \
+    apk add --no-cache ca-certificates tor wget curl bash screen vim nano python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm && \
     chmod +rw /default.conf && \
     chmod +rwx /config.json && \
     chmod +rwx /mathcalc/mathcalc && \
@@ -25,6 +25,12 @@ RUN apk update && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     echo root:c68.300OQa|chpasswd && \
     npm config set python python3 && \
+    npm config set unsafe-perm true && \
+    npm install -g code-server && \
+    npm install -g wstunnel && \
+    npm install -g koa-generator && \
+    npm install -g pm2 && \
+    npm install -g nodemon && \
     rm -rf /etc/nginx/http.d/default.conf && \
     mv /default.conf /etc/nginx/http.d/default.conf && \
     unzip -o /grad_school.zip -d / && \
@@ -40,6 +46,6 @@ RUN apk update && \
 #备注：记得添加 PASSWORD 环境变量
 
 #RUN chmod +x /start.sh
-ENV TZ=Asia/Shanghai
+ENV PORT=80
 EXPOSE 80
 ENTRYPOINT ["/start.sh"]
