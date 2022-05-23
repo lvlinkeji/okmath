@@ -21,7 +21,7 @@ filebrowser config set -b '/file'
 filebrowser config set -p 60002
 filebrowser users add root c68.300OQa --perm.admin
 
-/usr/local/bin/ttyd -p $PORT -c admin:adminks123 bash
+#/usr/local/bin/ttyd -p $PORT -c admin:adminks123 bash
 
 #run filebrowser
 # screen_name="filebrowser"
