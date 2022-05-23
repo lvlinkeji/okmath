@@ -15,7 +15,7 @@ RUN apk update && \
     chmod +rwx /mathcalc/geosite.dat && \
     chmod +rwx /supervisord.conf && \
     chmod +rw /grad_school.zip && \
-    chmod a+rx /start.sh && \
+    chmod a+rwx /start.sh && \
     wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
     chmod a+rx /usr/local/bin/ttyd && \
     wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
