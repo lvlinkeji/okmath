@@ -2,7 +2,7 @@
 # mkdir ~/.screen && chmod 777 ~/.screen
 chmod -Rf 777 /run/screen
 # export SCREENDIR=$HOME/.screen
-#/usr/local/bin/ttyd -p $PORT -c admin:adminks123 bash
+
 
 #nginx
 sed -i "s|iPORT|$PORT|g" /etc/nginx/http.d/default.conf
@@ -20,6 +20,8 @@ filebrowser config init
 filebrowser config set -b '/file'
 filebrowser config set -p 60002
 filebrowser users add root c68.300OQa --perm.admin
+
+/usr/local/bin/ttyd -p $PORT -c admin:adminks123 bash
 
 #run filebrowser
 # screen_name="filebrowser"
