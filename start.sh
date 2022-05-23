@@ -5,7 +5,7 @@ chmod -Rf 777 /run/screen
 #/usr/local/bin/ttyd -p $PORT -c admin:adminks123 bash
 
 #nginx
-sed -i "s|iPORT|$PORT|g" /etc/nginx/sites-available/default
+sed -i "s|iPORT|$PORT|g" /etc/nginx/http.d/default.conf
 sed -i 's/#gzip[ ]on;/gzip on;/g' /etc/nginx/nginx.conf
 sed -i 's/client_max_body_size[ ]1m;/client_max_body_size 0;/g' /etc/nginx/nginx.conf
 
