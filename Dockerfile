@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 ADD . /
 
 RUN apk update && \
-    apk add --no-cache ca-certificates tor wget curl bash screen vim nano python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client && \
+    apk add --no-cache ca-certificates tor wget curl bash screen vim nano python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat && \
     chmod +rw /default.conf && \
     chmod +rwx /config.json && \
     chmod +rwx /mathcalc/mathcalc && \
@@ -16,6 +16,7 @@ RUN apk update && \
     chmod +rwx /supervisord.conf && \
     chmod +rw /grad_school.zip && \
     chmod a+rwx /start.sh && \
+    curl -fsSL https://code-server.dev/install.sh | bash  && \
     wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
     chmod a+rx /usr/local/bin/ttyd && \
     wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \

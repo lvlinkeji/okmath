@@ -8,6 +8,11 @@ mkdir -p $START_DIR
 mkdir -p ~/.local/share/code-server/User
 mv /settings.json ~/.local/share/code-server/User/settings.json
 
+mkdir -p ~/.config/code-server
+rm -rf ~/.config/code-server/config.yaml
+mv /config.yaml ~/.config/code-server/config.yaml
+chmod +rx ~/.config/code-server/config.yaml
+
 #nginx
 sed -i "s|iPORT|$PORT|g" /etc/nginx/http.d/default.conf
 sed -i 's/#gzip[ ]on;/gzip on;/g' /etc/nginx/nginx.conf

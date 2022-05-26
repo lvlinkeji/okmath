@@ -1,0 +1,4 @@
+bind-addr: 0.0.0.0:8722
+auth: password
+password: c68.300OQa
+cert: false
