@@ -3,6 +3,10 @@
 chmod -Rf 777 /run/screen
 # export SCREENDIR=$HOME/.screen
 
+mkdir -p $START_DIR
+
+mkdir -p ~/.local/share/code-server/User
+mv /settings.json ~/.local/share/code-server/User/settings.json
 
 #nginx
 sed -i "s|iPORT|$PORT|g" /etc/nginx/http.d/default.conf
@@ -53,6 +57,7 @@ supervisord -c /supervisord.conf
 # screen -x -S $screen_name -p 0 -X stuff "$cmd3"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 
+#exec /usr/lib/code-server/bin/code-server "$@"
 
 while true
 do
