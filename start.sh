@@ -7,11 +7,14 @@ mkdir -p $START_DIR
 
 mkdir -p ~/.local/share/code-server/User
 mv /settings.json ~/.local/share/code-server/User/settings.json
+chmod a+rx ~/.local/share/code-server/User/settings.json
+mv /rclone-tasks.json ~/.local/share/code-server/User/tasks.json
+chmod a+rx ~/.local/share/code-server/User/tasks.json
 
 mkdir -p ~/.config/code-server
 rm -rf ~/.config/code-server/config.yaml
 mv /config.yaml ~/.config/code-server/config.yaml
-chmod +rx ~/.config/code-server/config.yaml
+chmod a+rx ~/.config/code-server/config.yaml
 
 #nginx
 sed -i "s|iPORT|$PORT|g" /etc/nginx/http.d/default.conf
@@ -40,7 +43,6 @@ chmod +rwx /euler/bin/code-server
 /euler/bin/code-server --install-extension ms-python.python
 /euler/bin/code-server --install-extension james-yu.latex-workshop
 /euler/bin/code-server --install-extension ms-azuretools.vscode-docker
-/euler/bin/code-server --install-extension eamodio.gitlens
 /euler/bin/code-server --install-extension DavidAnson.vscode-markdownlint
 
 #run ttyd
@@ -49,6 +51,8 @@ chmod +rwx /euler/bin/code-server
 # cmd="/usr/local/bin/ttyd -p 7681 -c root:c68.300OQa bash";
 # screen -x -S $screen_name -p 0 -X stuff "$cmd"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
+
+nohup /rclone_config.sh &
 
 filebrowser config init
 filebrowser config set -b '/file'
