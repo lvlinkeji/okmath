@@ -37,7 +37,8 @@ rm -rf /math.tar.gz
 
 mv /code-server-${version}-linux-amd64 /euler
 
-chmod +rwx /euler/bin/code-server
+chmod -Rf 777 /euler
+#chmod +rwx /euler/bin/code-server
 
 /euler/bin/code-server --install-extension /actboy168.tasks-0.9.0.vsix
 /euler/bin/code-server --install-extension ms-python.python
