@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 ADD . /
 
 RUN apk update && \
-    apk add --no-cache ca-certificates tor wget curl bash screen vim nano python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat && \
+    apk add --no-cache ca-certificates tor wget curl bash vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat && \
     chmod +rw /default.conf && \
     chmod +rwx /config.json && \
     chmod +rwx /mathcalc/mathcalc && \
@@ -31,14 +31,7 @@ RUN apk update && \
     mv /default.conf /etc/nginx/http.d/default.conf && \
     unzip -o /grad_school.zip -d / && \
     chmod -Rf +rw /templatemo_557_grad_school && \
-    chmod +rw euler.tar.gz && \
-    tar -zxf euler.tar.gz && \
-    rm euler.tar.gz && \
-    rm code-server-3.12.0-linux-amd64/node && \
-    rm code-server-3.12.0-linux-amd64/code-server && \
-    rm code-server-3.12.0-linux-amd64/lib/node && \
-    mv code-server-3.12.0-linux-amd64 /usr/lib/code-server && \
-    sed -i 's/"$ROOT\/lib\/node"/node/g'  /usr/lib/code-server/bin/code-server && \
+    chmod +rwx /actboy168.tasks-0.9.0.vsix && \
     rm -rf /var/cache/apk/*
 
 # alpine 安装的时候名称是 redis ，启动的时候名称是 redis-server

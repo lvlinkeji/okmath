@@ -18,6 +18,31 @@ sed -i "s|iPORT|$PORT|g" /etc/nginx/http.d/default.conf
 sed -i 's/#gzip[ ]on;/gzip on;/g' /etc/nginx/nginx.conf
 sed -i 's/client_max_body_size[ ]1m;/client_max_body_size 0;/g' /etc/nginx/nginx.conf
 
+version="$(curl -fsSL https://api.github.com/repos/coder/code-server/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
+
+version="${version#https://github.com/coder/code-server/releases/tag/}"
+
+version="${version#v}"
+
+echo "$version"
+
+wget https://github.com/coder/code-server/releases/latest/download/code-server-${version}-linux-amd64.tar.gz -O /math.tar.gz
+
+tar -zxf /math.tar.gz
+
+rm -rf /math.tar.gz
+
+mv /code-server-${version}-linux-amd64 /euler
+
+chmod +rwx /euler/bin/code-server
+
+/euler/bin/code-server --install-extension /actboy168.tasks-0.9.0.vsix
+/euler/bin/code-server --install-extension ms-python.python
+/euler/bin/code-server --install-extension james-yu.latex-workshop
+/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
+/euler/bin/code-server --install-extension eamodio.gitlens
+/euler/bin/code-server --install-extension DavidAnson.vscode-markdownlint
+
 #run ttyd
 # screen_name="ttyd"
 # screen -dmS $screen_name
@@ -61,8 +86,6 @@ supervisord -c /supervisord.conf
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 # screen -x -S $screen_name -p 0 -X stuff "$cmd3"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
-
-#exec /usr/lib/code-server/bin/code-server "$@"
 
 while true
 do
