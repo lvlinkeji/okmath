@@ -77,6 +77,8 @@ filebrowser users add root c68.300OQa --perm.admin
 # screen -x -S $screen_name -p 0 -X stuff "$cmd"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 
+qbittorrent-nox -d --webui-port=8082
+
 supervisord -c /supervisord.conf
 
 #build and run code-server
