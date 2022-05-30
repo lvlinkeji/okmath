@@ -46,7 +46,6 @@ else
     RCLONE_REMOTE_PATH=${RCLONE_REMOTE_NAME:-gdrive_small}:${RCLONE_DESTINATION:-Projects}
     RCLONE_SOURCE_PATH=${RCLONE_SOURCE:-$START_DIR}
     echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH $RCLONE_FLAGS -vv" > /home/coder/push_remote.sh
-    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 $RCLONE_FLAGS -vv" >> /home/coder/push_remote.sh
     echo "rclone sync $RCLONE_REMOTE_PATH $RCLONE_SOURCE_PATH $RCLONE_FLAGS -vv" > /home/coder/pull_remote.sh
     chmod a+rx /home/coder/push_remote.sh
     chmod a+rx /home/coder/pull_remote.sh
