@@ -1,7 +1,7 @@
 FROM alpine:edge
 
 USER root
-ENV TZ=Asia/Shanghai
+ENV TZ="Asia/Shanghai"
 ENV LANG C.UTF-8
 
 ADD . /
