@@ -44,7 +44,6 @@ chmod -Rf 777 /euler
 /euler/bin/code-server --install-extension ms-python.python
 /euler/bin/code-server --install-extension james-yu.latex-workshop
 /euler/bin/code-server --install-extension ms-azuretools.vscode-docker
-/euler/bin/code-server --install-extension DavidAnson.vscode-markdownlint
 
 #run ttyd
 # screen_name="ttyd"
