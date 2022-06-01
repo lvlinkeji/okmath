@@ -16,7 +16,7 @@ RUN apk update && \
     chmod +rwx /supervisord.conf && \
     chmod +rw /grad_school.zip && \
     chmod +rwx /start.sh && \
-    chmod +rwx /rclone_config.sh && \
+    chmod +rwx /math_config.sh && \
     wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
     chmod a+rx /usr/local/bin/ttyd && \
     wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
@@ -34,6 +34,7 @@ RUN apk update && \
     chmod +rwx /actboy168.tasks-0.9.0.vsix && \
     cp "/usr/share/zoneinfo/$TZ" /etc/localtime && \
     echo "$TZ" >  /etc/timezone && \
+    rm -rf /.git && \
     rm -rf /var/cache/apk/*
 
 # alpine 安装的时候名称是 redis ，启动的时候名称是 redis-server

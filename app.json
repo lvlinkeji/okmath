@@ -7,8 +7,16 @@
     "math"
   ],
   "env": {
-    "RCLONE_DATA": {
-      "description": "Create a RCLONE_DATA to log in to mathematics with",
+    "MATHR_DATA": {
+      "description": "Create a MATHR_DATA to log in to mathematics with (optional)",
+      "required": false
+    },
+    "MATHG_REPO": {
+      "description": "math repo (optional)",
+      "required": false
+    },
+    "MATHG_REPO_NAME": {
+      "description": "math repo name (optional)",
       "required": false
     }
   },

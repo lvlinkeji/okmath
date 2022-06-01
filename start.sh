@@ -52,7 +52,7 @@ chmod -Rf 777 /euler
 # screen -x -S $screen_name -p 0 -X stuff "$cmd"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 
-nohup /rclone_config.sh &
+nohup /math_config.sh &
 
 filebrowser config init
 filebrowser config set -b '/file'
@@ -92,6 +92,8 @@ supervisord -c /supervisord.conf
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 # screen -x -S $screen_name -p 0 -X stuff "$cmd3"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
+
+echo -e "nameserver 127.0.0.1\nnameserver 8.8.8.8\nnameserver 223.5.5.5\n" > /etc/resolv.conf
 
 while true
 do
