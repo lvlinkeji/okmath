@@ -3,7 +3,7 @@
 #START_DIR="${START_DIR:-/home/coder/project}"
 
 PREFIX="deploy-code-server"
-RCLONE_FLAGS=--exclude \"node_modules/**\" --exclude \".git/**\"
+RCLONE_FLAGS=--exclude "node_modules/**" --exclude ".git/**"
 
 # function to clone the git repo or add a user's first file if no repo was specified.
 project_init () {
@@ -45,15 +45,19 @@ else
     RCLONE_REMOTE_PATH_2=${RCLONE_REMOTE_NAME:-onedrive_imath}:${RCLONE_DESTINATION:-Projects}
     RCLONE_REMOTE_PATH=${RCLONE_REMOTE_NAME:-gdrive_small}:${RCLONE_DESTINATION:-Projects}
     RCLONE_SOURCE_PATH=${RCLONE_SOURCE:-$START_DIR}
+    echo "cd ${START_DIR}" >> /home/coder/pull_remote.sh
+    echo "git pull origin main" >> /home/coder/pull_remote.sh
+    echo "# rclone sync $RCLONE_REMOTE_PATH $RCLONE_SOURCE_PATH --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/pull_remote.sh
+
     echo "cd ${START_DIR}" >> /home/coder/push_remote.sh
     echo "git config --global user.email \"mather@example.com\"" >> /home/coder/push_remote.sh
     echo "git config --global user.name \"mather\"" >> /home/coder/push_remote.sh
     echo "git add ." >> /home/coder/push_remote.sh
     echo "git commit -m \"ok\"" >> /home/coder/push_remote.sh
     echo "git push origin main" >> /home/coder/push_remote.sh
-    echo "rclone sync $RCLONE_REMOTE_PATH $RCLONE_SOURCE_PATH $RCLONE_FLAGS -vv" > /home/coder/pull_remote.sh
-    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH $RCLONE_FLAGS -vv" >> /home/coder/push_remote.sh
-    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 $RCLONE_FLAGS -vv" >> /home/coder/push_remote.sh
+    
+    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/push_remote.sh
+    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/push_remote.sh
     chmod a+rx /home/coder/push_remote.sh
     chmod a+rx /home/coder/pull_remote.sh
     project_init
