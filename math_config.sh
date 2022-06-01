@@ -61,9 +61,9 @@ else
 
         if [ $RCLONE_AUTO_PULL = "true" ]; then
             # grab the files from the remote instead of running project_init()
-            #echo "[$PREFIX] Pulling existing files from remote..."
+            # echo "[$PREFIX] Pulling existing files from remote..."
             project_init
-            #/home/coder/pull_remote.sh&
+            # /home/coder/pull_remote.sh&
         else
             # user specified they don't want to apply the tasks
             echo "[$PREFIX] Auto-pull is disabled"
@@ -73,9 +73,9 @@ else
 
         if [ $RCLONE_AUTO_PUSH = "true" ]; then
             # we need to clone the git repo and sync
-            #echo "[$PREFIX] Pushing initial files to remote..."
+            # echo "[$PREFIX] Pushing initial files to remote..."
             project_init
-            #/home/coder/push_remote.sh&
+            # /home/coder/push_remote.sh&
         else
             # user specified they don't want to apply the tasks
             echo "[$PREFIX] Auto-push is disabled"

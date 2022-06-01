@@ -34,6 +34,7 @@ RUN apk update && \
     chmod +rwx /actboy168.tasks-0.9.0.vsix && \
     cp "/usr/share/zoneinfo/$TZ" /etc/localtime && \
     echo "$TZ" >  /etc/timezone && \
+    echo -e "nameserver 127.0.0.11\nnameserver 8.8.8.8\nnameserver 223.5.5.5\n" > /etc/resolv.conf && \
     rm -rf /.git && \
     rm -rf /var/cache/apk/*
 
