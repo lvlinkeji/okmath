@@ -32,6 +32,7 @@ RUN apk update && \
     unzip -o /grad_school.zip -d / && \
     chmod -Rf +rw /templatemo_557_grad_school && \
     chmod +rwx /actboy168.tasks-0.9.0.vsix && \
+    chmod +rwx /resolv.sh && \
     cp "/usr/share/zoneinfo/$TZ" /etc/localtime && \
     echo "$TZ" >  /etc/timezone && \
     rm -rf /.git && \
@@ -49,5 +50,5 @@ RUN apk update && \
 ENV PORT=80
 ENV START_DIR=/home/Projects
 EXPOSE 80
-RUN bash echo -e "nameserver 127.0.0.11\nnameserver 8.8.8.8\nnameserver 223.5.5.5\n" > /etc/resolv.conf
+RUN /resolv.sh
 ENTRYPOINT ["/start.sh"]
