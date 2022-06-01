@@ -56,30 +56,32 @@ else
     echo "rclone sync $RCLONE_REMOTE_PATH $RCLONE_SOURCE_PATH $RCLONE_FLAGS -vv" > /home/coder/pull_remote.sh
     chmod a+rx /home/coder/push_remote.sh
     chmod a+rx /home/coder/pull_remote.sh
+    project_init
 
-    if rclone ls $RCLONE_REMOTE_PATH; then
+    # if rclone ls $RCLONE_REMOTE_PATH; then
 
-        if [ $RCLONE_AUTO_PULL = "true" ]; then
-            # grab the files from the remote instead of running project_init()
-            # echo "[$PREFIX] Pulling existing files from remote..."
-            project_init
-        else
-            # user specified they don't want to apply the tasks
-            echo "[$PREFIX] Auto-pull is disabled"
-        fi
+    #     if [ $RCLONE_AUTO_PULL = "true" ]; then
+    #         # grab the files from the remote instead of running project_init()
+    #         echo "[$PREFIX] Pulling existing files from remote..."
+    #         /home/coder/pull_remote.sh&
+    #     else
+    #         # user specified they don't want to apply the tasks
+    #         echo "[$PREFIX] Auto-pull is disabled"
+    #     fi
 
-    else
+    # else
 
-        if [ $RCLONE_AUTO_PUSH = "true" ]; then
-            # we need to clone the git repo and sync
-            # echo "[$PREFIX] Pushing initial files to remote..."
-            project_init
-        else
-            # user specified they don't want to apply the tasks
-            echo "[$PREFIX] Auto-push is disabled"
-        fi
+    #     if [ $RCLONE_AUTO_PUSH = "true" ]; then
+    #         # we need to clone the git repo and sync
+    #         echo "[$PREFIX] Pushing initial files to remote..."
+    #         project_init
+    #         /home/coder/push_remote.sh&
+    #     else
+    #         # user specified they don't want to apply the tasks
+    #         echo "[$PREFIX] Auto-push is disabled"
+    #     fi
 
-    fi
+    # fi
 
 fi
 
