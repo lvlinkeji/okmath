@@ -45,8 +45,6 @@ else
     RCLONE_REMOTE_PATH_2=${RCLONE_REMOTE_NAME:-onedrive_imath}:${RCLONE_DESTINATION:-Projects}
     RCLONE_REMOTE_PATH=${RCLONE_REMOTE_NAME:-gdrive_small}:${RCLONE_DESTINATION:-Projects}
     RCLONE_SOURCE_PATH=${RCLONE_SOURCE:-$START_DIR}
-    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH $RCLONE_FLAGS -vv" > /home/coder/push_remote.sh
-    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 $RCLONE_FLAGS -vv" >> /home/coder/push_remote.sh
     echo "cd ${START_DIR}" >> /home/coder/push_remote.sh
     echo "git config --global user.email \"mather@example.com\"" >> /home/coder/push_remote.sh
     echo "git config --global user.name \"mather\"" >> /home/coder/push_remote.sh
@@ -54,6 +52,8 @@ else
     echo "git commit -m \"ok\"" >> /home/coder/push_remote.sh
     echo "git push origin main" >> /home/coder/push_remote.sh
     echo "rclone sync $RCLONE_REMOTE_PATH $RCLONE_SOURCE_PATH $RCLONE_FLAGS -vv" > /home/coder/pull_remote.sh
+    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH $RCLONE_FLAGS -vv" >> /home/coder/push_remote.sh
+    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 $RCLONE_FLAGS -vv" >> /home/coder/push_remote.sh
     chmod a+rx /home/coder/push_remote.sh
     chmod a+rx /home/coder/pull_remote.sh
     project_init
