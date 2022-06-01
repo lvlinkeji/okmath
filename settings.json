@@ -4,5 +4,6 @@
   "editor.unicodeHighlight.ambiguousCharacters": false,
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 1000,
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on",
+  "git.ignoreMissingGitWarning": true
 }
