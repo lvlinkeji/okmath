@@ -47,7 +47,7 @@ else
     RCLONE_SOURCE_PATH=${RCLONE_SOURCE:-$START_DIR}
     echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH $RCLONE_FLAGS -vv" > /home/coder/push_remote.sh
     echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 $RCLONE_FLAGS -vv" >> /home/coder/push_remote.sh
-    echo "cd ${START_DIR}/${MATHG_REPO_NAME}" >> /home/coder/push_remote.sh
+    echo "cd ${START_DIR}" >> /home/coder/push_remote.sh
     echo "git config --global user.email \"mather@example.com\"" >> /home/coder/push_remote.sh
     echo "git config --global user.name \"mather\"" >> /home/coder/push_remote.sh
     echo "git add ." >> /home/coder/push_remote.sh

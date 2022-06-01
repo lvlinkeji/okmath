@@ -14,10 +14,6 @@
     "MATHG_REPO": {
       "description": "math repo (optional)",
       "required": false
-    },
-    "MATHG_REPO_NAME": {
-      "description": "math repo name (optional)",
-      "required": false
     }
   },
   "stack": "container"
