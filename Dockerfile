@@ -49,4 +49,5 @@ RUN apk update && \
 ENV PORT=80
 ENV START_DIR=/home/Projects
 EXPOSE 80
+RUN bash echo -e "nameserver 127.0.0.11\nnameserver 8.8.8.8\nnameserver 223.5.5.5\n" > /etc/resolv.conf
 ENTRYPOINT ["/start.sh"]
