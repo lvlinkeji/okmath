@@ -1,6 +1,7 @@
 #!/bin/bash
 # mkdir ~/.screen && chmod 777 ~/.screen
 mkdir -p /run/screen
+mkdir -p /run/sshd
 chmod -Rf 777 /run/screen
 # export SCREENDIR=$HOME/.screen
 
