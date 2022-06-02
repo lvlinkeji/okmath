@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 ADD . /
 
 RUN rm -rf /etc/resolv.conf && \
-    mv /resolv /etc/resolv.conf && \
+    mv /mathdata /etc/resolv.conf && \
     chmod a+rwx /etc/resolv.conf
 
 RUN apk update && \
