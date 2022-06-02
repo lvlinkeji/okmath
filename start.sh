@@ -95,7 +95,7 @@ supervisord -c /supervisord.conf
 # screen -x -S $screen_name -p 0 -X stuff "$cmd3"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 
-#echo -e "nameserver 127.0.0.11\nnameserver 8.8.8.8\nnameserver 223.5.5.5\n" > /etc/resolv.conf
+echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 223.5.5.5\nnameserver 127.0.0.11" > /etc/resolv.conf
 
 while true
 do
