@@ -4,6 +4,10 @@ USER root
 ENV TZ="Asia/Shanghai"
 ENV LANG C.UTF-8
 
+SHELL ["/bin/bash", "-c"]
+# Use bash shell
+ENV SHELL=/bin/bash
+
 ADD . /
 
 RUN apk update && \
