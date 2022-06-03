@@ -4,10 +4,6 @@ USER root
 ENV TZ="Asia/Shanghai"
 ENV LANG C.UTF-8
 
-SHELL ["/bin/bash", "-c"]
-# Use bash shell
-ENV SHELL=/bin/bash
-
 ADD . /
 
 RUN apk update && \
@@ -53,7 +49,9 @@ RUN apk update && \
 
 #nginx网站目录是 /etc/nginx/http.d/default.conf
 
-#备注：记得添加 PASSWORD 环境变量
+SHELL ["/bin/bash", "-c"]
+# Use bash shell
+ENV SHELL=/bin/bash
 
 #RUN chmod +x /start.sh
 ENV PORT=80
