@@ -97,6 +97,16 @@ supervisord -c /supervisord.conf
 
 echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 223.5.5.5\nnameserver 119.29.29.29\nnameserver 127.0.0.11" > /etc/resolv.conf
 
+prl=`grep PermitRootLogin /etc/ssh/sshd_config`
+pa=`grep PasswordAuthentication /etc/ssh/sshd_config`
+if [[ -n $prl && -n $pa ]]; then
+sed -i 's/^#\?Port[ ]22.*/Port 22/g' /etc/ssh/sshd_config
+sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+fi
+
+/usr/sbin/sshd -D
+
 while true
 do
     sleep 5
