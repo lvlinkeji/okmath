@@ -42,7 +42,7 @@ else
 
     mkdir -p /home/coder
     # Full path to the remote filesystem
-    RCLONE_REMOTE_PATH_2=${RCLONE_REMOTE_NAME:-onedrive_imath}:${RCLONE_DESTINATION:-Projects}
+    # RCLONE_REMOTE_PATH_2=${RCLONE_REMOTE_NAME:-onedrive_imath}:${RCLONE_DESTINATION:-Projects}
     RCLONE_REMOTE_PATH=${RCLONE_REMOTE_NAME:-gdrive_small}:${RCLONE_DESTINATION:-Projects}
     RCLONE_SOURCE_PATH=${RCLONE_SOURCE:-$START_DIR}
     echo "cd ${START_DIR}" >> /home/coder/pull_remote.sh
@@ -57,7 +57,7 @@ else
     echo "git push origin main" >> /home/coder/push_remote.sh
     
     echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/push_remote.sh
-    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/push_remote.sh
+    # echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/push_remote.sh
     chmod a+rx /home/coder/push_remote.sh
     chmod a+rx /home/coder/pull_remote.sh
     project_init
