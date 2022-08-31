@@ -105,7 +105,7 @@ sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 fi
 
-/usr/sbin/sshd -D
+#/usr/sbin/sshd -D
 
 while true
 do
