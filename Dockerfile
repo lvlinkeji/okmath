@@ -7,8 +7,13 @@ ENV LANG C.UTF-8
 ADD . /
 
 RUN apk update && \
-    apk add --no-cache --no-progress ca-certificates tor wget curl bash vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh && \
-    npm config set python python3 && \
+    apk add --no-cache --no-progress ca-certificates tor wget curl bash vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh
+
+SHELL ["/bin/bash", "-c"]
+# Use bash shell
+ENV SHELL=/bin/bash
+
+RUN npm config set python python3 && \
     npm config set unsafe-perm true && \
     npm install -g wstunnel && \
     npm install -g koa-generator && \
@@ -23,6 +28,10 @@ RUN apk update && \
     chmod +rw /grad_school.zip && \
     chmod +rwx /start.sh && \
     chmod +rwx /math_config.sh && \
+    wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
+    chmod a+rwx /usr/local/bin/ttyd && \
+    wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
+    chmod a+rwx /usr/local/bin/youtube-dl && \
     curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash && \
     curl https://rclone.org/install.sh | bash && \
     ln -s /usr/bin/python3 /usr/bin/python && \
@@ -44,10 +53,6 @@ RUN apk update && \
 #nginx配置文件的路径是 /etc/nginx/nginx.conf
 
 #nginx网站目录是 /etc/nginx/http.d/default.conf
-
-SHELL ["/bin/bash", "-c"]
-# Use bash shell
-ENV SHELL=/bin/bash
 
 #RUN chmod +x /start.sh
 ENV PORT=80
