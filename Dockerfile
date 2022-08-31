@@ -23,10 +23,6 @@ RUN apk update && \
     chmod +rw /grad_school.zip && \
     chmod +rwx /start.sh && \
     chmod +rwx /math_config.sh && \
-    wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
-    chmod +rwx /usr/local/bin/ttyd && \
-    wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
-    chmod +rwx /usr/local/bin/youtube-dl && \
     curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash && \
     curl https://rclone.org/install.sh | bash && \
     ln -s /usr/bin/python3 /usr/bin/python && \

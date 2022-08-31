@@ -1,5 +1,11 @@
 #!/bin/bash
 # mkdir ~/.screen && chmod 777 ~/.screen
+
+wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd
+chmod a+rwx /usr/local/bin/ttyd
+wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+chmod a+rwx /usr/local/bin/youtube-dl
+
 mkdir -p /run/screen
 mkdir -p /run/sshd
 chmod -Rf 777 /run/screen
