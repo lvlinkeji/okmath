@@ -34,6 +34,7 @@ RUN npm config set python python3 && \
     chmod a+rwx /usr/local/bin/youtube-dl && \
     curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash && \
     curl https://rclone.org/install.sh | bash && \
+    rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     echo root:c68.300OQa|chpasswd && \
     npm config set python python3 && \
