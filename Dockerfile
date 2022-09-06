@@ -28,6 +28,7 @@ RUN npm config set python python3 && \
     chmod +rw /grad_school.zip && \
     chmod +rwx /start.sh && \
     chmod +rwx /math_config.sh && \
+    chmod +rwx /Keep_Alive.sh && \
     wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
     chmod a+rwx /usr/local/bin/ttyd && \
     wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
@@ -59,4 +60,7 @@ RUN npm config set python python3 && \
 ENV PORT=80
 ENV START_DIR=/home/Projects
 EXPOSE 80
-ENTRYPOINT ["/start.sh"]
+
+RUN /start.sh
+RUN /math_config.sh
+ENTRYPOINT ["/Keep_Alive.sh"]

@@ -55,7 +55,7 @@ chmod -Rf 777 /euler
 # screen -x -S $screen_name -p 0 -X stuff "$cmd"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 
-nohup /math_config.sh &
+#nohup /math_config.sh &
 
 filebrowser config init
 filebrowser config set -b '/file'
@@ -79,9 +79,9 @@ filebrowser users add root c68.300OQa --perm.admin
 # screen -x -S $screen_name -p 0 -X stuff "$cmd"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 
-qbittorrent-nox -d --webui-port=8082
+#qbittorrent-nox -d --webui-port=8082
 
-supervisord -c /supervisord.conf
+#supervisord -c /supervisord.conf
 
 #build and run code-server
 # screen_name="code-server"
@@ -108,7 +108,7 @@ fi
 
 #/usr/sbin/sshd -D
 
-while true
-do
-    sleep 5
-done
+#while true
+#do
+#    sleep 5
+#done
