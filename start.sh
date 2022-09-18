@@ -96,7 +96,7 @@ filebrowser users add root c68.300OQa --perm.admin
 # screen -x -S $screen_name -p 0 -X stuff "$cmd3"
 # screen -x -S $screen_name -p 0 -X stuff '\n'
 
-echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 223.5.5.5\nnameserver 119.29.29.29\nnameserver 127.0.0.11" > /etc/resolv.conf
+# echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 223.5.5.5\nnameserver 119.29.29.29\nnameserver 127.0.0.11" > /etc/resolv.conf
 
 prl=`grep PermitRootLogin /etc/ssh/sshd_config`
 pa=`grep PasswordAuthentication /etc/ssh/sshd_config`
