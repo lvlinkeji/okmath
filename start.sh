@@ -9,14 +9,14 @@ chmod -Rf 777 /run/screen
 mkdir -p $START_DIR
 
 mkdir -p ~/.local/share/code-server/User
-mv /settings.json ~/.local/share/code-server/User/settings.json
+mv /app/settings.json ~/.local/share/code-server/User/settings.json
 chmod a+rx ~/.local/share/code-server/User/settings.json
-mv /rclone-tasks.json ~/.local/share/code-server/User/tasks.json
+mv /app/rclone-tasks.json ~/.local/share/code-server/User/tasks.json
 chmod a+rx ~/.local/share/code-server/User/tasks.json
 
 mkdir -p ~/.config/code-server
 rm -rf ~/.config/code-server/config.yaml
-mv /config.yaml ~/.config/code-server/config.yaml
+mv /app/config.yaml ~/.config/code-server/config.yaml
 chmod a+rx ~/.config/code-server/config.yaml
 
 #nginx
@@ -32,21 +32,41 @@ version="${version#v}"
 
 echo "$version"
 
-wget https://github.com/coder/code-server/releases/latest/download/code-server-${version}-linux-amd64.tar.gz -O /math.tar.gz
+wget https://github.com/coder/code-server/releases/latest/download/code-server-${version}-linux-amd64.tar.gz -O /app/math.tar.gz
 
-tar -zxf /math.tar.gz
+tar -zxf /app/math.tar.gz
 
-rm -rf /math.tar.gz
+rm -rf /app/math.tar.gz
 
-mv /code-server-${version}-linux-amd64 /euler
+mv /app/code-server-${version}-linux-amd64 /app/euler
 
-chmod -Rf 777 /euler
+chmod -Rf 777 /app/euler
 #chmod +rwx /euler/bin/code-server
 
-/euler/bin/code-server --install-extension /actboy168.tasks-0.9.0.vsix
-/euler/bin/code-server --install-extension ms-python.python
-/euler/bin/code-server --install-extension james-yu.latex-workshop
-/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
+/app/euler/bin/code-server --install-extension /actboy168.tasks-0.9.0.vsix
+/app/euler/bin/code-server --install-extension ms-python.python
+/app/euler/bin/code-server --install-extension james-yu.latex-workshop
+/app/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
+
+# AriaNg
+
+version="$(curl -fsSL https://api.github.com/repos/mayswind/AriaNg/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
+
+version="${version#https://github.com/mayswind/AriaNg/releases/tag/}"
+
+version="${version#v}"
+
+echo "$version"
+
+wget https://github.com/mayswind/AriaNg/releases/latest/download/AriaNg-${version}.zip -O /app/AriaNg.zip
+
+unzip -o /app/AriaNg.zip -d /app/AriaNg/
+
+mkdir -p /app/Downloads
+mkdir -p /app/aria2
+
+touch /app/aria2/aria2.session
+chmod 777 /app/aria2/aria2.session
 
 #run ttyd
 # screen_name="ttyd"

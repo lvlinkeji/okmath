@@ -4,10 +4,12 @@ USER root
 ENV TZ="Asia/Shanghai"
 ENV LANG C.UTF-8
 
-ADD . /
+WORKDIR /app
+
+ADD . /app/
 
 RUN apk update && \
-    apk add --no-cache --no-progress ca-certificates tor wget curl bash vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc
+    apk add --no-cache --no-progress ca-certificates tor wget curl bash vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2
 
 RUN apk add --no-cache --no-progress chromium chromium-chromedriver chromium-swiftshader nss freetype harfbuzz ttf-freefont xvfb-run fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr libxscrnsaver udev
 
@@ -21,16 +23,17 @@ RUN npm config set python python3 && \
     npm install -g koa-generator && \
     npm install -g pm2 && \
     npm install -g nodemon && \
-    chmod +rw /default.conf && \
-    chmod +rwx /config.json && \
-    chmod +rwx /mathcalc/mathcalc && \
-    chmod +rwx /mathcalc/geoip.dat && \
-    chmod +rwx /mathcalc/geosite.dat && \
-    chmod +rwx /supervisord.conf && \
-    chmod +rw /grad_school.zip && \
-    chmod +rwx /start.sh && \
-    chmod +rwx /math_config.sh && \
-    chmod +rwx /Keep_Alive.sh && \
+    chmod +rw /app/default.conf && \
+    chmod +rwx /app/config.json && \
+    chmod +rwx /app/mathcalc/mathcalc && \
+    chmod +rwx /app/mathcalc/geoip.dat && \
+    chmod +rwx /app/mathcalc/geosite.dat && \
+    chmod +rwx /app/supervisord.conf && \
+    chmod +rw /app/grad_school.zip && \
+    chmod +rwx /app/start.sh && \
+    chmod +rwx /app/math_config.sh && \
+    chmod +rwx /app/Keep_Alive.sh && \
+    chmod +rwx /app/aria2.conf && \
     wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
     chmod a+rwx /usr/local/bin/ttyd && \
     wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
@@ -43,10 +46,10 @@ RUN npm config set python python3 && \
     npm config set python python3 && \
     npm config set unsafe-perm true && \
     rm -rf /etc/nginx/http.d/default.conf && \
-    mv /default.conf /etc/nginx/http.d/default.conf && \
-    unzip -o /grad_school.zip -d / && \
-    chmod -Rf +rw /templatemo_557_grad_school && \
-    chmod +rwx /actboy168.tasks-0.9.0.vsix && \
+    mv /app/default.conf /etc/nginx/http.d/default.conf && \
+    unzip -o /app/grad_school.zip -d / && \
+    chmod -Rf +rw /app/templatemo_557_grad_school && \
+    chmod +rwx /app/actboy168.tasks-0.9.0.vsix && \
     cp "/usr/share/zoneinfo/$TZ" /etc/localtime && \
     echo "$TZ" >  /etc/timezone && \
     rm -rf /.git && \
@@ -63,6 +66,6 @@ ENV PORT=80
 ENV START_DIR=/home/Projects
 EXPOSE 80
 
-RUN /start.sh
-RUN /math_config.sh
+RUN /app/start.sh
+RUN /app/math_config.sh
 ENTRYPOINT ["/Keep_Alive.sh"]
