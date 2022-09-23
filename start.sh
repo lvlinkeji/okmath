@@ -68,6 +68,8 @@ mkdir -p /app/aria2
 touch /app/aria2/aria2.session
 chmod 777 /app/aria2/aria2.session
 
+rm -rf /app/AriaNg.zip
+
 #run ttyd
 # screen_name="ttyd"
 # screen -dmS $screen_name
