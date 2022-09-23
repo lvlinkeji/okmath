@@ -3,7 +3,7 @@
 #START_DIR="${START_DIR:-/home/coder/project}"
 
 PREFIX="deploy-code-server"
-RCLONE_FLAGS=--exclude "node_modules/**" --exclude ".git/**"
+# RCLONE_FLAGS=--exclude "node_modules/**" --exclude ".git/**"
 
 # function to clone the git repo or add a user's first file if no repo was specified.
 project_init () {

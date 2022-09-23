@@ -43,7 +43,7 @@ mv /app/code-server-${version}-linux-amd64 /app/euler
 chmod -Rf 777 /app/euler
 #chmod +rwx /euler/bin/code-server
 
-/app/euler/bin/code-server --install-extension /actboy168.tasks-0.9.0.vsix
+/app/euler/bin/code-server --install-extension /app/actboy168.tasks-0.9.0.vsix
 /app/euler/bin/code-server --install-extension ms-python.python
 /app/euler/bin/code-server --install-extension james-yu.latex-workshop
 /app/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
