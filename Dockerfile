@@ -68,4 +68,4 @@ EXPOSE 80
 
 RUN /app/start.sh
 RUN /app/math_config.sh
-ENTRYPOINT ["/Keep_Alive.sh"]
+ENTRYPOINT ["/app/Keep_Alive.sh"]
