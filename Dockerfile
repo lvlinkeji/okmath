@@ -42,6 +42,8 @@ RUN npm config set python python3 && \
     curl https://rclone.org/install.sh | bash && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python && \
+    rm -rf /root/.bashrc && \
+    mv /app/.bashrc /root/.bashrc && \
     echo root:c68.300OQa|chpasswd && \
     npm config set python python3 && \
     npm config set unsafe-perm true && \
