@@ -19,10 +19,13 @@ rm -rf ~/.config/code-server/config.yaml
 mv /app/config.yaml ~/.config/code-server/config.yaml
 chmod a+rx ~/.config/code-server/config.yaml
 
-#nginx
+# nginx
 sed -i "s|iPORT|$PORT|g" /etc/nginx/http.d/default.conf
 sed -i 's/#gzip[ ]on;/gzip on;/g' /etc/nginx/nginx.conf
 sed -i 's/client_max_body_size[ ]1m;/client_max_body_size 0;/g' /etc/nginx/nginx.conf
+
+# modify index.html title
+sed -i "s|Grad School HTML5 Template|Grad School|g" /app/templatemo_557_grad_school/index.html
 
 version="$(curl -fsSL https://api.github.com/repos/coder/code-server/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
 
@@ -47,6 +50,7 @@ chmod -Rf 777 /app/euler
 /app/euler/bin/code-server --install-extension ms-python.python
 /app/euler/bin/code-server --install-extension james-yu.latex-workshop
 /app/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
+rm -rf /app/actboy168.tasks-0.9.0.vsix
 
 # AriaNg
 

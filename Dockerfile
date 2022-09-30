@@ -50,6 +50,7 @@ RUN npm config set python python3 && \
     rm -rf /etc/nginx/http.d/default.conf && \
     mv /app/default.conf /etc/nginx/http.d/default.conf && \
     unzip -o /app/grad_school.zip -d /app/ && \
+    rm -rf /app/grad_school.zip && \
     chmod -Rf +rw /app/templatemo_557_grad_school && \
     chmod +rwx /app/actboy168.tasks-0.9.0.vsix && \
     cp "/usr/share/zoneinfo/$TZ" /etc/localtime && \
