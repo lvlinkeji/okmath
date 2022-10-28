@@ -17,8 +17,7 @@ SHELL ["/bin/bash", "-c"]
 # Use bash shell
 ENV SHELL=/bin/bash
 
-RUN npm config set unsafe-perm true && \
-    npm install -g wstunnel && \
+RUN npm install -g wstunnel && \
     npm install -g koa-generator && \
     npm install -g pm2 && \
     npm install -g nodemon && \
