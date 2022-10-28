@@ -52,7 +52,7 @@ RUN npm config set python python3 && \
     unzip -o /app/grad_school.zip -d /app/ && \
     rm -rf /app/grad_school.zip && \
     chmod -Rf +rw /app/templatemo_557_grad_school && \
-    chmod +rwx /app/actboy168.tasks-0.9.0.vsix && \
+    chmod +rwx /app/actboy168.tasks-0.11.1.vsix && \
     cp "/usr/share/zoneinfo/$TZ" /etc/localtime && \
     echo "$TZ" >  /etc/timezone && \
     rm -rf /app/.git && \
