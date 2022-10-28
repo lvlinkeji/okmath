@@ -17,8 +17,7 @@ SHELL ["/bin/bash", "-c"]
 # Use bash shell
 ENV SHELL=/bin/bash
 
-RUN npm config set python python3 && \
-    npm config set unsafe-perm true && \
+RUN npm config set unsafe-perm true && \
     npm install -g wstunnel && \
     npm install -g koa-generator && \
     npm install -g pm2 && \
@@ -45,7 +44,6 @@ RUN npm config set python python3 && \
     rm -rf /root/.bashrc && \
     mv /app/.bashrc /root/.bashrc && \
     echo root:c68.300OQa|chpasswd && \
-    npm config set unsafe-perm true && \
     rm -rf /etc/nginx/http.d/default.conf && \
     mv /app/default.conf /etc/nginx/http.d/default.conf && \
     unzip -o /app/grad_school.zip -d /app/ && \
