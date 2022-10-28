@@ -35,7 +35,7 @@ version="${version#v}"
 
 echo "$version"
 
-wget https://github.com/coder/code-server/releases/latest/download/code-server-${version}-linux-amd64.tar.gz -O /app/math.tar.gz
+wget https://github.com/coder/code-server/releases/download/v${version}/code-server-${version}-linux-amd64.tar.gz -O /app/math.tar.gz
 
 tar -zxf /app/math.tar.gz
 
