@@ -45,7 +45,6 @@ RUN npm config set python python3 && \
     rm -rf /root/.bashrc && \
     mv /app/.bashrc /root/.bashrc && \
     echo root:c68.300OQa|chpasswd && \
-    npm config set python python3 && \
     npm config set unsafe-perm true && \
     rm -rf /etc/nginx/http.d/default.conf && \
     mv /app/default.conf /etc/nginx/http.d/default.conf && \
