@@ -47,7 +47,7 @@ else
     RCLONE_SOURCE_PATH=${RCLONE_SOURCE:-$START_DIR}
     echo "cd ${START_DIR}" >> /home/coder/pull_remote.sh
     echo "git pull origin main" >> /home/coder/pull_remote.sh
-    echo "# rclone sync $RCLONE_REMOTE_PATH $RCLONE_SOURCE_PATH --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/pull_remote.sh
+    echo "# rclone sync $RCLONE_REMOTE_PATH $RCLONE_SOURCE_PATH --exclude \"node_modules/**\" --exclude \".git/**\" --progress" >> /home/coder/pull_remote.sh
 
     echo "cd ${START_DIR}" >> /home/coder/push_remote.sh
     echo "git config --global user.email \"mather@example.com\"" >> /home/coder/push_remote.sh
@@ -56,7 +56,7 @@ else
     echo "git commit -m \"ok\"" >> /home/coder/push_remote.sh
     echo "git push origin main" >> /home/coder/push_remote.sh
     
-    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/push_remote.sh
+    echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH --exclude \"node_modules/**\" --exclude \".git/**\" --progress" >> /home/coder/push_remote.sh
     # echo "rclone sync $RCLONE_SOURCE_PATH $RCLONE_REMOTE_PATH_2 --exclude \"node_modules/**\" --exclude \".git/**\" -vv" >> /home/coder/push_remote.sh
     chmod a+rx /home/coder/push_remote.sh
     chmod a+rx /home/coder/pull_remote.sh
