@@ -27,7 +27,9 @@ sed -i 's/client_max_body_size[ ]1m;/client_max_body_size 0;/g' /etc/nginx/nginx
 # modify index.html title
 sed -i "s|Grad School HTML5 Template|Grad School|g" /app/templatemo_557_grad_school/index.html
 
-version="$(curl -fsSL https://api.github.com/repos/coder/code-server/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
+#version="$(curl -fsSL https://api.github.com/repos/coder/code-server/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
+
+version="$(curl -fsSLI -o /dev/null -w "%{url_effective}" https://github.com/coder/code-server/releases/latest)"
 
 version="${version#https://github.com/coder/code-server/releases/tag/}"
 
