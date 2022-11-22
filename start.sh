@@ -52,6 +52,7 @@ chmod -Rf 777 /app/euler
 /app/euler/bin/code-server --install-extension ms-python.python
 /app/euler/bin/code-server --install-extension james-yu.latex-workshop
 /app/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
+/app/euler/bin/code-server --install-extension formulahendry.code-runner
 rm -rf /app/actboy168.tasks-0.11.1.vsix
 
 # AriaNg
