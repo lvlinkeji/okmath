@@ -55,6 +55,25 @@ chmod -Rf 777 /app/euler
 /app/euler/bin/code-server --install-extension formulahendry.code-runner
 rm -rf /app/actboy168.tasks-0.11.1.vsix
 
+# download ms-vscode.cpptools
+
+url=https://marketplace.visualstudio.com/items/ms-vscode.cpptools/changelog
+wget $url -O changelog
+oldver=`cat changelog |grep -o '.\{0,0\}## Version.\{0,8\}'|head -n 1 |cut -d' ' -f3|cut -d: -f1`
+ver=`echo $oldver |awk -F'.'  '{print $1"."$2"."$3+1 }'`
+# wget https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-vscode/vsextensions/cpptools/$ver/vspackage?targetPlatform=alpine-x64 -O ms-vscode.cpptools-$ver@alpine-x64.vsix
+
+rm -rf changelog
+
+while ! wget https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-vscode/vsextensions/cpptools/$ver/vspackage?targetPlatform=alpine-x64 -O /app/ms-vscode.cpptools-$ver@alpine-x64.vsix
+do
+    sleep 5
+done
+
+/app/euler/bin/code-server --install-extension /app/ms-vscode.cpptools-$ver@alpine-x64.vsix
+
+rm -rf /app/ms-vscode.cpptools-$ver@alpine-x64.vsix
+
 # AriaNg
 
 version="$(curl -fsSL https://api.github.com/repos/mayswind/AriaNg/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
