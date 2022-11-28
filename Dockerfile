@@ -9,7 +9,7 @@ WORKDIR /app
 ADD . /app/
 
 RUN apk update && \
-    apk add --no-cache --no-progress ca-certificates tor wget curl bash vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2 coreutils openjdk11
+    apk add --no-cache --no-progress ca-certificates tor wget curl bash vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2 coreutils openjdk11 ttyd
 
 RUN apk add --no-cache --no-progress chromium chromium-chromedriver chromium-swiftshader nss freetype harfbuzz ttf-freefont xvfb-run fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr libxscrnsaver udev
 
@@ -32,8 +32,8 @@ RUN npm install -g wstunnel && \
     chmod +rwx /app/math_config.sh && \
     chmod +rwx /app/Keep_Alive.sh && \
     chmod +rwx /app/aria2.conf && \
-    wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
-    chmod a+rwx /usr/local/bin/ttyd && \
+    # wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -O /usr/local/bin/ttyd && \
+    # chmod a+rwx /usr/local/bin/ttyd && \
     wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
     chmod a+rwx /usr/local/bin/youtube-dl && \
     curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash && \
