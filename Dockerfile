@@ -42,6 +42,7 @@ RUN npm install -g wstunnel && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp && \
     chmod a+rx /usr/local/bin/yt-dlp && \
+    pip3 install you-get && \
     rm -rf /root/.bashrc && \
     mv /app/.bashrc /root/.bashrc && \
     echo root:c68.300OQa|chpasswd && \
