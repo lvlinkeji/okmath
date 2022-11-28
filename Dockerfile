@@ -40,6 +40,8 @@ RUN npm install -g wstunnel && \
     curl https://rclone.org/install.sh | bash && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python && \
+    wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp && \
+    chmod a+rx /usr/local/bin/yt-dlp && \
     rm -rf /root/.bashrc && \
     mv /app/.bashrc /root/.bashrc && \
     echo root:c68.300OQa|chpasswd && \
