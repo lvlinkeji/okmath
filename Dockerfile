@@ -21,6 +21,7 @@ RUN npm install -g wstunnel && \
     npm install -g koa-generator && \
     npm install -g pm2 && \
     npm install -g nodemon && \
+    npm install -g typescript && \
     chmod +rw /app/default.conf && \
     chmod +rwx /app/config.json && \
     chmod +rwx /app/mathcalc/mathcalc && \
