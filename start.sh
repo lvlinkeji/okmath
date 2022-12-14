@@ -155,6 +155,11 @@ sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 fi
 
+
+# for redis-server
+sysctl vm.overcommit_memory=1
+
+
 #/usr/sbin/sshd -D
 
 #while true
