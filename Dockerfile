@@ -22,6 +22,7 @@ RUN npm install -g wstunnel && \
     npm install -g pm2 && \
     npm install -g nodemon && \
     npm install -g typescript && \
+    npm install -g @angular/cli && \
     chmod +rw /app/default.conf && \
     chmod +rwx /app/config.json && \
     chmod +rwx /app/mathcalc/mathcalc && \
