@@ -1,6 +1,21 @@
 FROM alpine:latest
 
 USER root
+
+# Create a group and user
+# RUN addgroup -S euler && adduser -S euler -G euler
+# install usermod apk add shadow
+RUN apk add --no-cache --no-progress shadow bash && \
+    addgroup euler && \
+    adduser -G euler -s /bin/bash -D euler && \
+    mkdir -p /home/euler/.local && \
+    chown -R euler:euler /home/euler && \
+    chown -R euler:euler /home/euler/.local && \
+    usermod -a -G root euler
+
+# Tell docker that all future commands should run as the appuser user
+USER euler
+
 ENV TZ="Asia/Shanghai"
 ENV LANG C.UTF-8
 
@@ -9,7 +24,7 @@ WORKDIR /app
 ADD . /app/
 
 RUN apk update && \
-    apk add --no-cache --no-progress ca-certificates tor wget curl bash vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2 coreutils openjdk11 ttyd libwebsockets-evlib_uv libuv json-c-dev
+    apk add --no-cache --no-progress ca-certificates tor wget curl vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2 coreutils openjdk11 ttyd libwebsockets-evlib_uv libuv json-c-dev
 
 # fonts https://wiki.alpinelinux.org/wiki/Fonts
 RUN apk add --no-cache --no-progress msttcorefonts-installer terminus-font ttf-inconsolata ttf-dejavu font-noto font-noto-cjk ttf-font-awesome font-noto-extra font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic font-cronyx-cyrillic terminus-font font-noto font-noto-thai font-noto-tibetan font-ipa font-sony-misc font-daewoo-misc font-jis-misc font-isas-misc terminus-font font-noto font-noto-extra font-arabic-misc font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic font-cronyx-cyrillic font-noto-arabic font-noto-armenian font-noto-cherokee font-noto-devanagari font-noto-ethiopic font-noto-georgian font-noto-hebrew font-noto-lao font-noto-malayalam font-noto-tamil font-noto-thaana font-noto-thai
@@ -51,8 +66,11 @@ RUN npm install -g wstunnel && \
     chmod a+rx /usr/local/bin/yt-dlp && \
     pip3 install you-get && \
     rm -rf /root/.bashrc && \
-    mv /app/.bashrc /root/.bashrc && \
+    cp /app/.bashrc /root/.bashrc && \
+    cp /app/.bashrc /home/euler/.bashrc && \
+    rm -rf /app/.bashrc && \
     echo root:c68.300OQa|chpasswd && \
+    echo euler:c68.300OQa|chpasswd && \
     rm -rf /etc/nginx/http.d/default.conf && \
     mv /app/default.conf /etc/nginx/http.d/default.conf && \
     unzip -o /app/grad_school.zip -d /app/ && \

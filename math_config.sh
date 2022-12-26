@@ -19,9 +19,9 @@ if [[ -z "${MATHR_DATA}" ]]; then
 
 else
     echo "[$PREFIX] Copying rclone config..."
-    mkdir -p ~/.config/rclone/
-    touch ~/.config/rclone/rclone.conf
-    echo $MATHR_DATA | base64 -d > ~/.config/rclone/rclone.conf
+    mkdir -p /home/$USER/.config/rclone/
+    touch /home/$USER/.config/rclone/rclone.conf
+    echo $MATHR_DATA | base64 -d > /home/$USER/.config/rclone/rclone.conf
 
     # default to true
     RCLONE_VSCODE_TASKS="${RCLONE_VSCODE_TASKS:-true}"
