@@ -15,9 +15,6 @@ RUN apk add --no-cache --no-progress shadow bash && \
     adduser euler abuild && \
     adduser euler root
 
-# Tell docker that all future commands should run as the appuser user
-USER euler
-
 ENV TZ="Asia/Shanghai"
 ENV LANG C.UTF-8
 
@@ -34,8 +31,6 @@ RUN apk add --no-cache --no-progress msttcorefonts-installer terminus-font ttf-i
 RUN fc-cache -fv
 
 RUN apk add --no-cache --no-progress chromium chromium-chromedriver chromium-swiftshader nss freetype harfbuzz ttf-freefont xvfb-run fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr libxscrnsaver udev xauth dumb-init linux-headers binutils-gold
-
-USER euler
 
 SHELL ["/bin/bash", "-c"]
 # Use bash shell

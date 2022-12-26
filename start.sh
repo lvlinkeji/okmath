@@ -8,27 +8,16 @@ chmod -Rf 777 /run/screen
 
 mkdir -p $START_DIR
 
-# mkdir -p ~/.local/share/code-server/User
-# mv /app/settings.json ~/.local/share/code-server/User/settings.json
-# chmod a+rx ~/.local/share/code-server/User/settings.json
-# mv /app/rclone-tasks.json ~/.local/share/code-server/User/tasks.json
-# chmod a+rx ~/.local/share/code-server/User/tasks.json
+mkdir -p ~/.local/share/code-server/User
+mv /app/settings.json ~/.local/share/code-server/User/settings.json
+chmod a+rx ~/.local/share/code-server/User/settings.json
+mv /app/rclone-tasks.json ~/.local/share/code-server/User/tasks.json
+chmod a+rx ~/.local/share/code-server/User/tasks.json
 
-mkdir -p /home/$USER/.local/share/code-server/User
-mv /app/settings.json /home/$USER/.local/share/code-server/User/settings.json
-chmod a+rx /home/$USER/.local/share/code-server/User/settings.json
-mv /app/rclone-tasks.json /home/$USER/.local/share/code-server/User/tasks.json
-chmod a+rx /home/$USER/.local/share/code-server/User/tasks.json
-
-# mkdir -p ~/.config/code-server
-# rm -rf ~/.config/code-server/config.yaml
-# mv /app/config.yaml ~/.config/code-server/config.yaml
-# chmod a+rx ~/.config/code-server/config.yaml
-
-mkdir -p /home/$USER/.config/code-server
-rm -rf /home/$USER/.config/code-server/config.yaml
-mv /app/config.yaml /home/$USER/.config/code-server/config.yaml
-chmod a+rx /home/$USER/.config/code-server/config.yaml
+mkdir -p ~/.config/code-server
+rm -rf ~/.config/code-server/config.yaml
+mv /app/config.yaml ~/.config/code-server/config.yaml
+chmod a+rx ~/.config/code-server/config.yaml
 
 # nginx
 sed -i "s|iPORT|$PORT|g" /etc/nginx/http.d/default.conf
