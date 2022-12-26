@@ -13,8 +13,7 @@ RUN apk add --no-cache --no-progress shadow bash && \
     chown -R euler:euler /home/euler/.local && \
     usermod -a -G root euler && \
     adduser euler abuild && \
-    chown -R euler:euler /var/lib/apk/db/installed && \
-    chmod -R 664 /var/lib/apk/db/
+    adduser euler root
 
 # Tell docker that all future commands should run as the appuser user
 USER euler
