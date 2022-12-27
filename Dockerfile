@@ -36,12 +36,9 @@ SHELL ["/bin/bash", "-c"]
 # Use bash shell
 ENV SHELL=/bin/bash
 
-RUN uname -m > /tmp/archtest
-
-RUN if [ "$(cat /tmp/archtest)" = "x86_64" ]; then \
-    echo "x86_64 architecture" && \
-    rm -rf /tmp/archtest \
-    fi
+RUN if [ "$(uname -m)" = "x86_64" ]; then \
+    echo "x86_64 architecture";\
+  fi
 
 RUN npm install -g wstunnel && \
     npm install -g koa-generator && \
