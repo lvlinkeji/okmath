@@ -36,6 +36,10 @@ SHELL ["/bin/bash", "-c"]
 # Use bash shell
 ENV SHELL=/bin/bash
 
+RUN if [ "$(uname -m)" = "x86_64" ]; then \
+        echo "x86_64 architecture" \
+    fi
+
 RUN npm install -g wstunnel && \
     npm install -g koa-generator && \
     npm install -g pm2 && \
