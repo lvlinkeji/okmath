@@ -36,8 +36,11 @@ SHELL ["/bin/bash", "-c"]
 # Use bash shell
 ENV SHELL=/bin/bash
 
-RUN if [ "$(uname -m)" = "x86_64" ]; then \
-        echo "x86_64 architecture" \
+RUN uname -m > /tmp/archtest
+
+RUN if [ "$(cat /tmp/archtest)" = "x86_64" ]; then \
+    echo "x86_64 architecture" && \
+    rm -rf /tmp/archtest \
     fi
 
 RUN npm install -g wstunnel && \
