@@ -65,6 +65,7 @@ RUN npm install -g wstunnel && \
     curl https://rclone.org/install.sh | bash && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python && \
+    ln -s /usr/bin/chromium-browser /usr/bin/google-chrome && \
     wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp && \
     chmod a+rx /usr/local/bin/yt-dlp && \
     pip3 install you-get && \
