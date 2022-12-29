@@ -32,6 +32,11 @@ RUN fc-cache -fv
 
 RUN apk add --no-cache --no-progress chromium chromium-chromedriver chromium-swiftshader nss freetype harfbuzz ttf-freefont xvfb-run fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr libxscrnsaver udev xauth dumb-init linux-headers binutils-gold
 
+# website
+RUN apk add --no-cache --no-progress php-fpm php-curl php-gd php-mbstring php-xml php-common mariadb mariadb-client php-mysqli
+# apk add --no-cache --no-progress php7-xmlrpc
+RUN apk add --no-cache --no-progress --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted php-pear
+
 SHELL ["/bin/bash", "-c"]
 # Use bash shell
 ENV SHELL=/bin/bash
