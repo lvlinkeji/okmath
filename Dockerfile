@@ -33,6 +33,9 @@ RUN fc-cache -fv
 RUN apk add --no-cache --no-progress chromium chromium-chromedriver chromium-swiftshader nss freetype harfbuzz ttf-freefont xvfb-run fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr libxscrnsaver udev xauth dumb-init linux-headers binutils-gold
 
 # Image conversion tool. ImageMagick Inkscape rsvg-convert
+# convert input.svg output.png
+# inkscape input.svg -e output.png
+# rsvg-convert input.svg -o output.png
 RUN apk add --no-cache --no-progress imagemagick inkscape librsvg
 
 # website
