@@ -34,6 +34,7 @@ RUN apk add --no-cache --no-progress chromium chromium-chromedriver chromium-swi
 
 # Image conversion tool. ImageMagick Inkscape rsvg-convert
 # convert input.svg output.png
+# convert input.pdf image.jpg
 # inkscape input.svg -e output.png
 # rsvg-convert input.svg -o output.png
 RUN apk add --no-cache --no-progress imagemagick inkscape librsvg
