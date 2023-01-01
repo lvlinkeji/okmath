@@ -160,7 +160,7 @@ sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/ss
 fi
 
 
-# for redis-server
+# redis-server
 # sysctl vm.overcommit_memory=1
 
 
