@@ -91,7 +91,12 @@ RUN npm install -g wstunnel && \
     # chmod a+rwx /usr/local/bin/ttyd && \
     wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
     chmod a+rwx /usr/local/bin/youtube-dl && \
-    curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash && \
+    wget https://github.com/filebrowser/filebrowser/releases/latest/download/linux-amd64-filebrowser.tar.gz -O /app/linux-amd64-filebrowser.tar.gz && \
+    tar -xzf /app/linux-amd64-filebrowser.tar.gz -C /usr/local/bin/ && \
+    rm -rf /app/linux-amd64-filebrowser.tar.gz && \
+    rm -rf /usr/local/bin/CHANGELOG.md && \
+    rm -rf /usr/local/bin/LICENSE && \
+    chmod a+rwx /usr/local/bin/filebrowser && \
     curl https://rclone.org/install.sh | bash && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python && \
