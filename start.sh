@@ -13,6 +13,8 @@ mv /app/settings.json ~/.local/share/code-server/User/settings.json
 chmod a+rx ~/.local/share/code-server/User/settings.json
 mv /app/rclone-tasks.json ~/.local/share/code-server/User/tasks.json
 chmod a+rx ~/.local/share/code-server/User/tasks.json
+mv /app/argv.json ~/.local/share/code-server/User/argv.json
+chmod a+rx ~/.local/share/code-server/User/argv.json
 
 mkdir -p ~/.config/code-server
 rm -rf ~/.config/code-server/config.yaml
@@ -53,6 +55,7 @@ chmod -Rf 777 /app/euler
 /app/euler/bin/code-server --install-extension james-yu.latex-workshop
 /app/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
 /app/euler/bin/code-server --install-extension formulahendry.code-runner
+/app/euler/bin/code-server --install-extension MS-CEINTL.vscode-language-pack-zh-hans
 rm -rf /app/actboy168.tasks-0.11.1.vsix
 
 # download ms-vscode.cpptools
