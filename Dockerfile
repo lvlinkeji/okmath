@@ -23,7 +23,7 @@ WORKDIR /app
 ADD . /app/
 
 RUN apk update && \
-    apk add --no-cache --no-progress ca-certificates tor wget curl vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2 coreutils openjdk11 ttyd libwebsockets-evlib_uv libuv json-c-dev pandoc ncurses openssl pcre pcre-dev openssl-dev zlib-dev readline-dev perl figlet zlib apache2-utils p7zip
+    apk add --no-cache --no-progress ca-certificates tor wget curl vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2 coreutils openjdk11 ttyd libwebsockets-evlib_uv libuv json-c-dev pandoc ncurses openssl pcre pcre-dev openssl-dev zlib-dev readline-dev perl figlet zlib apache2-utils p7zip python3-dev libffi-dev grep mongodb-tools
 
 # fonts https://wiki.alpinelinux.org/wiki/Fonts
 RUN apk add --no-cache --no-progress msttcorefonts-installer terminus-font ttf-inconsolata ttf-dejavu font-noto font-noto-cjk ttf-font-awesome font-noto-extra font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic font-cronyx-cyrillic terminus-font font-noto font-noto-thai font-noto-tibetan font-ipa font-sony-misc font-daewoo-misc font-jis-misc font-isas-misc terminus-font font-noto font-noto-extra font-arabic-misc font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic font-cronyx-cyrillic font-noto-arabic font-noto-armenian font-noto-cherokee font-noto-devanagari font-noto-ethiopic font-noto-georgian font-noto-hebrew font-noto-lao font-noto-malayalam font-noto-tamil font-noto-thaana font-noto-thai
@@ -43,6 +43,13 @@ RUN apk add --no-cache --no-progress imagemagick inkscape librsvg
 RUN apk add --no-cache --no-progress php-fpm php-curl php-gd php-mbstring php-xml php-common mariadb mariadb-client php-mysqli
 # apk add --no-cache --no-progress php7-xmlrpc
 RUN apk add --no-cache --no-progress --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted php-pear
+
+
+RUN apk add --no-cache --no-progress openrc
+# rc-service <service_name> start
+# rc-service <service_name> status
+# rc-service <service_name> stop
+# rc-service <service_name> restart
 
 SHELL ["/bin/bash", "-c"]
 # Use bash shell
