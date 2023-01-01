@@ -13,6 +13,7 @@ mv /app/settings.json ~/.local/share/code-server/User/settings.json
 chmod a+rx ~/.local/share/code-server/User/settings.json
 mv /app/rclone-tasks.json ~/.local/share/code-server/User/tasks.json
 chmod a+rx ~/.local/share/code-server/User/tasks.json
+rm -rf ~/.local/share/code-server/User/argv.json
 mv /app/argv.json ~/.local/share/code-server/User/argv.json
 chmod a+rx ~/.local/share/code-server/User/argv.json
 
