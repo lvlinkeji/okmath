@@ -1,6 +1,6 @@
 #!/bin/bash
 
-nginx -g daemon on
+nginx
 
 qbittorrent-nox -d --webui-port=8082
 
