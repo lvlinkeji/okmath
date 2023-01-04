@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:edge
 
 USER root
 
@@ -23,7 +23,7 @@ WORKDIR /app
 ADD . /app/
 
 RUN apk update && \
-    apk add --no-cache --no-progress ca-certificates tor wget curl vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2 coreutils openjdk11 ttyd libwebsockets-evlib_uv libuv json-c-dev pandoc ncurses openssl pcre pcre-dev openssl-dev zlib-dev readline-dev perl figlet zlib apache2-utils p7zip python3-dev libffi-dev grep mongodb-tools openrc curl-dev scons xz-dev
+    apk add --no-cache --no-progress ca-certificates tor wget curl vim nano screen python3 py3-pip nginx alpine-sdk libstdc++ libc6-compat libx11-dev libxkbfile-dev libsecret-dev libwebsockets-dev git redis supervisor zip unzip build-base ffmpeg cmake fuse xz yarn nodejs npm gnupg openssh-client gcompat qbittorrent-nox musl-dev tzdata autoconf automake openssh mingw-w64-gcc aria2 coreutils openjdk11 ttyd libwebsockets-evlib_uv libuv json-c-dev pandoc ncurses openssl pcre pcre-dev openssl-dev zlib-dev readline-dev perl figlet zlib apache2-utils p7zip python3-dev libffi-dev grep mongodb-tools openrc curl-dev scons xz-dev libressl-dev
 
 # rc-service <service_name> start
 # rc-service <service_name> status
