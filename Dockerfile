@@ -49,14 +49,14 @@ RUN apk add --no-cache --no-progress php-fpm php-curl php-gd php-mbstring php-xm
 # apk add --no-cache --no-progress php7-xmlrpc
 RUN apk add --no-cache --no-progress --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted php-pear
 
-RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.6/main >> /etc/apk/repositories && \
-    echo http://dl-cdn.alpinelinux.org/alpine/v3.6/community >> /etc/apk/repositories && \
-    mkdir -p /data/db/ && \
-    # adduser -D mongodb
-    chown -R euler:euler /data/db
+# RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.6/main >> /etc/apk/repositories && \
+#     echo http://dl-cdn.alpinelinux.org/alpine/v3.6/community >> /etc/apk/repositories && \
+#     mkdir -p /data/db/ && \
+#     # adduser -D mongodb
+#     chown -R euler:euler /data/db
 
-RUN apk update && \
-    apk add --no-cache --no-progress mongodb
+# RUN apk update && \
+#     apk add --no-cache --no-progress mongodb
 
 # /usr/local/bin/mongod --config /etc/mongod.conf
 # mongod --bind_ip 0.0.0.0
