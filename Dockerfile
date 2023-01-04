@@ -49,6 +49,7 @@ RUN apk add --no-cache --no-progress php-fpm php-curl php-gd php-mbstring php-xm
 # apk add --no-cache --no-progress php7-xmlrpc
 RUN apk add --no-cache --no-progress --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted php-pear
 
+# RUN wget https://fastdl.mongodb.org/src/mongodb-src-r6.0.0.tar.gz
 # RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.6/main >> /etc/apk/repositories && \
 #     echo http://dl-cdn.alpinelinux.org/alpine/v3.6/community >> /etc/apk/repositories && \
 #     mkdir -p /data/db/ && \
