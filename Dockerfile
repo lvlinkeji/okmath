@@ -49,7 +49,8 @@ RUN apk add --no-cache --no-progress php-fpm php-curl php-gd php-mbstring php-xm
 # apk add --no-cache --no-progress php7-xmlrpc
 RUN apk add --no-cache --no-progress --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted php-pear
 
-# RUN wget https://fastdl.mongodb.org/src/mongodb-src-r6.0.0.tar.gz
+# https://www.mongodb.com/try/download/community
+# RUN wget https://fastdl.mongodb.org/src/mongodb-src-r6.0.3.zip
 # scons --link-model=static --force-jobs -j4 mongod
 # Explanation: -j4 means that the number of CPU cores is 4.
 # RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.6/main >> /etc/apk/repositories && \
@@ -62,7 +63,8 @@ RUN apk add --no-cache --no-progress --repository http://dl-cdn.alpinelinux.org/
 #     apk add --no-cache --no-progress mongodb
 
 # /usr/local/bin/mongod --config /etc/mongod.conf
-# mongod --bind_ip 0.0.0.0
+# user=euler
+# mongod --bind_ip 0.0.0.0 --port 27017
 
 
 SHELL ["/bin/bash", "-c"]
