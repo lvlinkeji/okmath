@@ -96,7 +96,7 @@ async function download() {
         if (element.length > 0) {
             // 点击元素
             await element[0].click();
-            console.log(`element.length =${element.length} 点击元素`)
+            console.log(`element.length = ${element.length} 点击元素`)
         }
         
         //等待请求
