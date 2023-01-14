@@ -37,6 +37,7 @@ async function download() {
 
         let downloadUrl, response_downloadUrl;
         let fileName;
+        let options = {};
         page.on('response', response => {
             if (response.headers()['content-disposition']) {
                 let contentDisposition = response.headers()['content-disposition'];
@@ -47,7 +48,7 @@ async function download() {
                     console.log(`response 1 fileName = ${fileName}`)
                     console.log(`response 1 response_downloadUrl = ${response_downloadUrl}`)
                     // let file = fs.createWriteStream(fileName);
-                    let request = https.get(response_downloadUrl, function (response) {
+                    let request = https.get(response_downloadUrl, options, function (response) {
                         console.log(`response.statusCode = ${response.statusCode}`)
                         if (response.statusCode === 200) {
                             let file = fs.createWriteStream('/app/ms-vscode.cpptools-alpine-x64.vsix.gz');
@@ -74,7 +75,7 @@ async function download() {
                         console.log(`response 2 fileName = ${fileName}`)
                         console.log(`response 2 response_downloadUrl = ${response_downloadUrl}`)
                         // let file = fs.createWriteStream(fileName);
-                        let request = https.get(response_downloadUrl, function (response) {
+                        let request = https.get(response_downloadUrl, options, function (response) {
                             console.log(`response.statusCode = ${response.statusCode}`)
                             if (response.statusCode === 200) {
                                 let file = fs.createWriteStream('/app/ms-vscode.cpptools-alpine-x64.vsix.gz');
@@ -104,11 +105,10 @@ async function download() {
         });
 
         await page.goto('https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools', { waitUntil: 'networkidle0' });
-
+        const userAgent = await page.evaluate(() => navigator.userAgent);
         // 点击下载按钮
         await page.waitForSelector('.item-details-download-button');
         await page.click('.item-details-download-button');
-
 
         // 等待下载按钮出现
         await page.waitForXPath(`//span[contains(text(), "Alpine Linux 64 bit")]`, { timeout: 120000 });
@@ -121,6 +121,15 @@ async function download() {
             await element[0].click();
             console.log(`element.length = ${element.length} 点击元素`)
         }
+
+        
+        const cookies = await page.cookies();
+        options = {
+            headers: {
+                'User-Agent': userAgent,
+                'Cookie': cookies.map(c => `${c.name}=${c.value}`).join('; ')
+            }
+        };
 
         //等待请求
         await page.waitForResponse(response => response.url() == response_downloadUrl, { timeout: 120000 });
