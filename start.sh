@@ -85,7 +85,7 @@ gunzip /app/ms-vscode.cpptools-alpine-x64.vsix.gz
 cd /app/
 rm -rf /app/ms-vscode.cpptools-alpine-x64.vsix
 rm -rf /app/ms-vscode.cpptools-alpine-x64.vsix.gz
-rm -rf /app/node
+# rm -rf /app/node
 
 # AriaNg
 
