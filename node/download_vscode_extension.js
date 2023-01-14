@@ -33,9 +33,9 @@ async function download() {
 
     try {
 
-        //xvfb-run --auto-servernum --server-args="-screen 2 1366x768x24" node AzureTTS.js
+        //xvfb-run --auto-servernum --server-args="-screen 2 1366x768x24" node download_vscode_extension.js
 
-        let downloadUrl,response_downloadUrl;
+        let downloadUrl, response_downloadUrl;
         let fileName;
         page.on('response', response => {
             if (response.headers()['content-disposition']) {
@@ -47,13 +47,25 @@ async function download() {
                     console.log(`response 1 fileName = ${fileName}`)
                     console.log(`response 1 response_downloadUrl = ${response_downloadUrl}`)
                     // let file = fs.createWriteStream(fileName);
-                    let file = fs.createWriteStream('/app/ms-vscode.cpptools-alpine-x64.vsix.gz');
                     let request = https.get(response_downloadUrl, function (response) {
-                        response.pipe(file);
+                        console.log(`response.statusCode = ${response.statusCode}`)
+                        if (response.statusCode === 200) {
+                            let file = fs.createWriteStream('/app/ms-vscode.cpptools-alpine-x64.vsix.gz');
+                            response.pipe(file);
+                        } else {
+                            console.log("response 1 请求下载失败");
+                        }
                         response.on('end', () => {
-                            console.log("response 1 文件下载完成");
+                            if (response.statusCode === 200) {
+                                console.log("response 1 文件下载成功");
+                            } else {
+                                console.log("response 1 文件下载失败");
+                            }
                         });
+                    }).on('error', function (err) {
+                        console.log("response 1 请求发生错误", err);
                     });
+
                 } else {
                     let fileNameMatch = contentDisposition.match(/filename\*=UTF-8''(.+)/);
                     if (fileNameMatch) {
@@ -62,12 +74,23 @@ async function download() {
                         console.log(`response 2 fileName = ${fileName}`)
                         console.log(`response 2 response_downloadUrl = ${response_downloadUrl}`)
                         // let file = fs.createWriteStream(fileName);
-                        let file = fs.createWriteStream('/app/ms-vscode.cpptools-alpine-x64.vsix.gz');
                         let request = https.get(response_downloadUrl, function (response) {
-                            response.pipe(file);
+                            console.log(`response.statusCode = ${response.statusCode}`)
+                            if (response.statusCode === 200) {
+                                let file = fs.createWriteStream('/app/ms-vscode.cpptools-alpine-x64.vsix.gz');
+                                response.pipe(file);
+                            } else {
+                                console.log("response 2 请求下载失败");
+                            }
                             response.on('end', () => {
-                                console.log("response 2 文件下载完成");
+                                if (response.statusCode === 200) {
+                                    console.log("response 2 文件下载成功");
+                                } else {
+                                    console.log("response 2 文件下载失败");
+                                }
                             });
+                        }).on('error', function (err) {
+                            console.log("response 2 请求发生错误", err);
                         });
                     }
                 }
@@ -98,9 +121,9 @@ async function download() {
             await element[0].click();
             console.log(`element.length = ${element.length} 点击元素`)
         }
-        
+
         //等待请求
-        await page.waitForResponse(response => response.url() == response_downloadUrl,{ timeout: 120000 });
+        await page.waitForResponse(response => response.url() == response_downloadUrl, { timeout: 120000 });
         console.log("响应完成了,开始获取文件");
 
     } catch (e) {

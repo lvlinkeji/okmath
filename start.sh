@@ -78,9 +78,15 @@ rm -rf /app/actboy168.tasks-0.11.1.vsix
 cd /app/node/
 npm install
 xvfb-run --auto-servernum --server-args="-screen 2 1366x768x24" node /app/node/download_vscode_extension.js
-gunzip /app/ms-vscode.cpptools-alpine-x64.vsix.gz
 
-/app/euler/bin/code-server --install-extension /app/ms-vscode.cpptools-alpine-x64.vsix
+file="/app/ms-vscode.cpptools-alpine-x64.vsix.gz"
+if [ -e "$file" ]
+then
+  gunzip /app/ms-vscode.cpptools-alpine-x64.vsix.gz
+  /app/euler/bin/code-server --install-extension /app/ms-vscode.cpptools-alpine-x64.vsix
+else
+  echo "The downloading of the VSCode plugin failed."
+fi
 
 cd /app/
 rm -rf /app/ms-vscode.cpptools-alpine-x64.vsix
@@ -170,7 +176,7 @@ fi
 
 # redis-server
 # sysctl vm.overcommit_memory=1
-mkdir -p /app/redis-server
+mkdir -p /app/redis-server/
 mkdir -p /tmp/log/
 #/usr/sbin/sshd -D
 
