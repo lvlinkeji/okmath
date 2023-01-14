@@ -162,7 +162,7 @@ fi
 
 # redis-server
 # sysctl vm.overcommit_memory=1
-
+mkdir -p /app/redis-server
 
 #/usr/sbin/sshd -D
 
