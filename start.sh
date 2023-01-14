@@ -170,7 +170,7 @@ fi
 # redis-server
 # sysctl vm.overcommit_memory=1
 mkdir -p /app/redis-server
-
+mkdir -p /tmp/log/
 #/usr/sbin/sshd -D
 
 #while true
