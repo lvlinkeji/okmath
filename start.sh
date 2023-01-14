@@ -60,24 +60,30 @@ chmod -Rf 777 /app/euler
 rm -rf /app/actboy168.tasks-0.11.1.vsix
 
 # download ms-vscode.cpptools
-# https://stackoverflow.com/questions/66134532/vscode-marketplace-extension-corrupt-zip-end-of-central-directory-record-signa
-url=https://marketplace.visualstudio.com/items/ms-vscode.cpptools/changelog
-wget $url -O changelog
-oldver=`cat changelog |grep -o '.\{0,0\}## Version.\{0,8\}'|head -n 1 |cut -d' ' -f3|cut -d: -f1`
-ver=`echo $oldver |awk -F'.'  '{print $1"."$2"."$3+1 }'`
+# # https://stackoverflow.com/questions/66134532/vscode-marketplace-extension-corrupt-zip-end-of-central-directory-record-signa
+# url=https://marketplace.visualstudio.com/items/ms-vscode.cpptools/changelog
+# wget $url -O changelog
+# oldver=`cat changelog |grep -o '.\{0,0\}## Version.\{0,8\}'|head -n 1 |cut -d' ' -f3|cut -d: -f1`
+# ver=`echo $oldver |awk -F'.'  '{print $1"."$2"."$3+1 }'`
 
-rm -rf changelog
+# rm -rf changelog
 
-while ! wget https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-vscode/vsextensions/cpptools/$ver/vspackage?targetPlatform=alpine-x64 -O /app/ms-vscode.cpptools-$ver@alpine-x64.vsix.gz
-do
-    sleep 5
-done
+# while ! wget https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-vscode/vsextensions/cpptools/$ver/vspackage?targetPlatform=alpine-x64 -O /app/ms-vscode.cpptools-$ver@alpine-x64.vsix.gz
+# do
+#     sleep 5
+# done
 
-gunzip /app/ms-vscode.cpptools-$ver@alpine-x64.vsix.gz
+# gunzip /app/ms-vscode.cpptools-$ver@alpine-x64.vsix.gz
 
-/app/euler/bin/code-server --install-extension /app/ms-vscode.cpptools-$ver@alpine-x64.vsix
+cd /app/node/
+npm install
+xvfb-run --auto-servernum --server-args="-screen 2 1366x768x24" node /app/node/download_vscode_extension.js
+gunzip /app/ms-vscode.cpptools-alpine-x64.vsix.gz
 
-rm -rf /app/ms-vscode.cpptools-$ver@alpine-x64.vsix
+/app/euler/bin/code-server --install-extension /app/ms-vscode.cpptools-alpine-x64.vsix
+
+rm -rf /app/ms-vscode.cpptools-alpine-x64.vsix
+rm -rf /app/node
 
 # AriaNg
 
