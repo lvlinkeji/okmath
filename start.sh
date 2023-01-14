@@ -82,6 +82,7 @@ gunzip /app/ms-vscode.cpptools-alpine-x64.vsix.gz
 
 /app/euler/bin/code-server --install-extension /app/ms-vscode.cpptools-alpine-x64.vsix
 
+cd /app/
 rm -rf /app/ms-vscode.cpptools-alpine-x64.vsix
 rm -rf /app/node
 
