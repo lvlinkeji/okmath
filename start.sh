@@ -77,9 +77,24 @@ rm -rf /app/actboy168.tasks-0.11.1.vsix
 
 cd /app/node/
 npm install
+
+count=0
+file="/app/ms-vscode.cpptools-alpine-x64.vsix.gz"
+
 xvfb-run --auto-servernum --server-args="-screen 2 1366x768x24" node /app/node/download_vscode_extension.js
 
-file="/app/ms-vscode.cpptools-alpine-x64.vsix.gz"
+while [ ! -e "$file" ]
+do
+  if [ $count -gt 20 ]
+  then
+    echo "Download failed after 20 attempts"
+    break
+  fi
+  sleep 5
+  xvfb-run --auto-servernum --server-args="-screen 2 1366x768x24" node /app/node/download_vscode_extension.js
+  count=$((count+1))
+done
+
 if [ -e "$file" ]
 then
   gunzip /app/ms-vscode.cpptools-alpine-x64.vsix.gz
