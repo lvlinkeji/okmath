@@ -53,6 +53,9 @@ async function download() {
                         if (response.statusCode === 200) {
                             let file = fs.createWriteStream('/app/ms-vscode.cpptools-alpine-x64.vsix.gz');
                             response.pipe(file);
+                            file.on('finish', () => {
+                                file.close();
+                            });
                         } else {
                             console.log("response 1 请求下载失败");
                         }
