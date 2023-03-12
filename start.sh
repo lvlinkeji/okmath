@@ -57,6 +57,7 @@ chmod -Rf 777 /app/euler
 /app/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
 /app/euler/bin/code-server --install-extension formulahendry.code-runner
 /app/euler/bin/code-server --install-extension MS-CEINTL.vscode-language-pack-zh-hans
+/app/euler/bin/code-server --install-extension golang.go
 rm -rf /app/actboy168.tasks-0.11.1.vsix
 
 # download ms-vscode.cpptools
