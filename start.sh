@@ -51,14 +51,14 @@ mv /app/code-server-${version}-linux-amd64 /app/euler
 chmod -Rf 777 /app/euler
 #chmod +rwx /euler/bin/code-server
 
-/app/euler/bin/code-server --install-extension /app/actboy168.tasks-0.11.1.vsix
+/app/euler/bin/code-server --install-extension actboy168.tasks
 /app/euler/bin/code-server --install-extension ms-python.python
 /app/euler/bin/code-server --install-extension james-yu.latex-workshop
 /app/euler/bin/code-server --install-extension ms-azuretools.vscode-docker
 /app/euler/bin/code-server --install-extension formulahendry.code-runner
 /app/euler/bin/code-server --install-extension MS-CEINTL.vscode-language-pack-zh-hans
 /app/euler/bin/code-server --install-extension golang.go
-rm -rf /app/actboy168.tasks-0.11.1.vsix
+
 
 # download ms-vscode.cpptools
 # # https://stackoverflow.com/questions/66134532/vscode-marketplace-extension-corrupt-zip-end-of-central-directory-record-signa
