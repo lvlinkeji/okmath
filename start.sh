@@ -143,6 +143,7 @@ rm -rf /app/AriaNg.zip
 filebrowser config init
 filebrowser config set -b '/file'
 filebrowser config set -p 60002
+filebrowser config set -a 0.0.0.0
 filebrowser users add euler c68.300OQa --perm.admin
 
 #/usr/local/bin/ttyd -p $PORT -c admin:adminks123 bash
